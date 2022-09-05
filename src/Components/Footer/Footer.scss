@@ -1,0 +1,22 @@
+.footer__container {
+    width: 100%;
+    margin: auto;
+    background-color: var(--lightPrimaryColor);
+    padding: 1rem 0;
+    color: var(--whiteColor);
+    text-align: center;
+
+    div {
+        margin-top: 10px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        cursor: pointer;
+
+
+        span {
+            color: var(--primaryColor)
+        }
+    }
+}

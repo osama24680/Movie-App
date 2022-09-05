@@ -1,0 +1,50 @@
+.selectedGenres {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--lightPrimaryColor);
+    margin-top: 20px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 10px;
+
+
+    .notSlected {
+        color: var(--whiteColor);
+        background-color: var(--primaryColor);
+        padding: 5px;
+        width: 150px;
+        height: 40px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .is_Slected {
+        color: var(--whiteColor);
+        background-color: var(--purpleColor);
+        padding: 5px;
+        width: 150px;
+        height: 40px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+@media(max-width:500px) {
+    .selectedGenres {
+        .notSlected {
+            width: 100%;
+        }
+
+        .is_Slected {
+            width: 100%;
+
+        }
+    }
+}

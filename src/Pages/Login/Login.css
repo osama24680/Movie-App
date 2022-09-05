@@ -1,0 +1,55 @@
+.container__signup {
+  background-image: url("../../assests/loginBackground3.jpg");
+}
+
+@media (max-width: 1024px) {
+  .formContainer {
+    padding: 1.2rem;
+    gap: .5rem;
+    width: 40%;
+  }
+  .formImg {
+    position: relative;
+  }
+  .contactUs {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .formContainer {
+    padding: .8rem;
+    gap: .3rem;
+    width: 70%;
+  }
+  .formContainer .FormBtn {
+    padding: 0.7rem 1.5rem;
+  }
+  .formImg {
+    position: relative;
+  }
+  .contactUs {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    flex-direction: column;
+  }
+  .formContainer {
+    padding: 1rem;
+    gap: .1rem;
+    width: 100%;
+  }
+  .formContainer .FormBtn {
+    padding: 0.5rem 1rem;
+  }
+  .formImg {
+    position: relative;
+    order: -1;
+  }
+  .contactUs {
+    display: none;
+  }
+}

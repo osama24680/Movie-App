@@ -1,0 +1,200 @@
+.container__signup {
+  background-image: url("../../assests/background.jpg");
+}
+
+.container__signup .black__layer {
+  gap: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: blue;
+  position: relative;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.container__signup .black__layer .formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid var(--primaryColor);
+  box-shadow: 2px 2px 25px 1px var(--primaryColor);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  gap: .8rem;
+  width: 40%;
+  height: 100%;
+}
+
+.container__signup .black__layer .formContainer input {
+  width: 100%;
+  outline: none;
+  padding: 0.8rem;
+  border: 2px solid var(--primaryColor);
+  border-radius: .4rem;
+  background-color: var(--lightPrimaryColor);
+  color: var(--primaryColor);
+}
+
+.container__signup .black__layer .formContainer .inputError {
+  margin-top: 0;
+  text-align: left;
+  width: 100%;
+  margin-left: 15px;
+  color: red;
+  font-size: 1rem;
+}
+
+.container__signup .black__layer .formContainer .FormBtn {
+  padding: 0.6rem 2rem;
+  font-size: 1rem;
+  background-color: transparent;
+  color: var(--primaryColor);
+  border: solid 2px var(--primaryColor);
+  margin-bottom: 0px;
+  border-radius: .4rem;
+}
+
+.container__signup .black__layer .formContainer .FormBtn:hover {
+  color: var(--primaryHover);
+  border: solid 2px var(--primaryHover);
+}
+
+.container__signup .black__layer .formContainer .registeredError {
+  margin-top: 10px;
+  margin-bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: red;
+  font-size: 1rem;
+}
+
+.container__signup .black__layer .formContainer .have {
+  color: var(--primaryColor);
+}
+
+.formImg {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+}
+
+.formImg .netflix {
+  width: 100%;
+}
+
+.formImg .netflix img {
+  width: 100%;
+}
+
+.formImg .platforms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.formImg .platforms img {
+  width: 40%;
+}
+
+.contactUs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: max-content;
+  padding: 1rem;
+  border-radius: 5rem;
+  top: 2rem;
+  left: -9rem;
+  gap: 1rem;
+  background-color: #fff;
+  box-shadow: var(--shadow);
+  color: #3BD03B;
+}
+
+.Cherry {
+  position: absolute;
+  width: max-content;
+  padding: 1rem;
+  border-radius: 5rem;
+  top: 2rem;
+  left: -16rem;
+}
+
+.contactUs div {
+  border-radius: 50%;
+  width: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+}
+
+.contactUs:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.formContainer p a {
+  color: var(--themeRed);
+  text-decoration: underline;
+}
+
+.svfIcon {
+  transform: rotate(90deg);
+}
+
+@media (max-width: 1024px) {
+  .formContainer {
+    padding: 1.2rem;
+    gap: .5rem;
+    width: 40%;
+  }
+  .formImg {
+    position: relative;
+  }
+  .contactUs {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .formContainer {
+    padding: .8rem;
+    gap: .3rem;
+    width: 70%;
+  }
+  .formContainer .FormBtn {
+    padding: 0.7rem 1.5rem;
+  }
+  .formImg {
+    position: relative;
+  }
+  .contactUs {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    flex-direction: column;
+  }
+  .formContainer {
+    padding: 1rem;
+    gap: .1rem;
+    width: 100%;
+  }
+  .formContainer .FormBtn {
+    padding: 0.5rem 1rem;
+  }
+  .formImg {
+    position: relative;
+    order: -1;
+  }
+  .contactUs {
+    display: none;
+  }
+}

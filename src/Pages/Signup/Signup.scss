@@ -1,0 +1,168 @@
+.container__signup {
+    background-image: url("../../assests/background.jpg");
+
+    .black__layer {
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #00000080;
+        position: relative;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+
+
+        .formContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid var(--primaryColor);
+            box-shadow: 2px 2px 25px 1px var(--primaryColor);
+            padding: 2.5rem 0rem;
+            border-radius: 1rem;
+            gap: .8rem;
+            width: 30%;
+            height: 100%;
+
+
+
+            input {
+                width: 85%;
+                outline: none;
+                padding: 0.8rem;
+                border: 2px solid var(--primaryColor);
+                border-radius: .4rem;
+                background-color: var(--lightPrimaryColor);
+                color: var(--primaryColor);
+            }
+
+            .inputError {
+                margin-top: 0;
+                text-align: left;
+                width: 100%;
+                margin-left: 75px;
+                color: red;
+                font-size: 1rem;
+            }
+
+            .FormBtn {
+                padding: 0.6rem 2rem;
+                font-size: 1.2rem;
+                background-color: transparent;
+                color: var(--primaryColor);
+                border: solid 2px var(--primaryColor);
+                margin-bottom: 0px;
+                border-radius: .4rem;
+                font-weight: bold;
+
+                &:hover {
+                    color: var(--primaryHover);
+                    border: solid 2px var(--primaryHover);
+                }
+            }
+
+            .registeredError {
+                margin-top: 10px;
+                margin-bottom: 0;
+                width: 100%;
+                text-align: center;
+                color: red;
+                font-size: 1rem;
+            }
+
+            .have {
+                color: var(--primaryColor);
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+        }
+
+        .formImg {
+            display: flex;
+            width: 50%;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            img {
+                width: 40%;
+            }
+        }
+    }
+
+
+}
+
+
+
+
+
+
+@media(max-width:1024px) {
+
+    .formContainer {
+        padding: 1.2rem;
+        gap: .5rem;
+        width: 40%;
+    }
+
+    .formImg {
+        position: relative;
+
+    }
+
+    .contactUs {
+        display: none
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .formContainer {
+        padding: .8rem;
+        gap: .3rem;
+        width: 70%;
+    }
+
+    .formContainer .FormBtn {
+        padding: 0.7rem 1.5rem;
+    }
+
+    .formImg {
+        position: relative;
+
+    }
+
+    .contactUs {
+        display: none
+    }
+
+}
+
+@media(max-width:500px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .formContainer {
+        padding: 1rem;
+        gap: .1rem;
+        width: 100%;
+    }
+
+    .formContainer .FormBtn {
+        padding: 0.5rem 1rem;
+    }
+
+    .formImg {
+        position: relative;
+        order: -1
+    }
+
+    .contactUs {
+        display: none
+    }
+
+}

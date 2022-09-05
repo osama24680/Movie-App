@@ -1,0 +1,135 @@
+.Shows {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: 40px;
+    row-gap: .8rem;
+
+    .movieItem {
+        width: 12%;
+        position: relative;
+        border-radius: 10px;
+        transition: .5s;
+
+        img {
+            border-radius: 10px;
+        }
+
+        .shows__content {
+            position: absolute;
+            border-radius: 10px;
+            color: var(--primaryColor);
+            top: 0px;
+            padding: 0rem 0.5rem;
+            height: 100%;
+            width: 100%;
+            // display: none;
+            opacity: 0;
+
+
+            span {
+                background-color: var(--lightPrimaryColor);
+                padding: .2rem .5rem;
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+            }
+
+            .spans_icons {
+                display: flex;
+                justify-content: space-between;
+
+            }
+
+            .spanDouble svg {
+                margin-right: 5px;
+
+            }
+
+        }
+
+        .play {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            font-size: 3rem;
+            transform: translateY(-50%);
+            transform: translateX(-50%);
+            color: var(--whiteColor);
+            opacity: 0;
+        }
+
+        p {
+            color: var(--whiteColor);
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            img {
+                cursor: pointer;
+                filter: blur(1.5px);
+            }
+
+            .shows__content,
+            .play {
+                opacity: 1;
+            }
+        }
+
+    }
+
+
+}
+
+@media(max-width:800px) {
+    .Shows {
+        gap: .5rem;
+        margin-top: 40px;
+        row-gap: .8rem;
+
+        .movieItem {
+            width: 18%;
+
+            .shows__content {
+                top: -7px;
+                padding: 0rem 0.2rem;
+                font-size: .8rem;
+
+                span {
+                    border-radius: 5px;
+                }
+            }
+
+            .play {
+                top: 25%;
+                font-size: 2.5rem;
+            }
+
+            p {
+                font-size: 13px;
+            }
+        }
+
+
+    }
+}
+
+@media(max-width:600px) {
+    .Shows {
+        gap: .5rem;
+        margin-top: 40px;
+        row-gap: .8rem;
+
+        .movieItem {
+            width: 45%;
+        }
+    }
+}
