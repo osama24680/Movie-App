@@ -269,7 +269,6 @@ export function MoviesStoreProvider(props) {
         navigate("/Login")
         localStorage.removeItem("userMovie")
     }
-    // ******************************************************************************
     // ************************************ useEffect ******************************************
 
     useEffect(() => {
@@ -327,8 +326,6 @@ export function MoviesStoreProvider(props) {
         setGenres,
         PageNumber,
         showELEMENT,
-
-
         joiErrors,
         registered,
         isLoading,
@@ -337,11 +334,9 @@ export function MoviesStoreProvider(props) {
         isLoggedIn,
         successLogin,
         successSignUp,
-
         handleSubmitLogin,
         handleInputLogin,
         logout,
-
     }
 
     return (

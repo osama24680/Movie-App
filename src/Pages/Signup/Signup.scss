@@ -118,51 +118,78 @@
 
 }
 
-@media(max-width:768px) {
+@media(max-width:1024px) {
+    .container__signup {
 
-    .formContainer {
-        padding: .8rem;
-        gap: .3rem;
-        width: 70%;
-    }
+        .black__layer {
 
-    .formContainer .FormBtn {
-        padding: 0.7rem 1.5rem;
-    }
+            padding: 1rem;
 
-    .formImg {
-        position: relative;
+            .formContainer {
+                padding: 1.5rem 0rem;
+                gap: .6rem;
+                width: 50%;
 
-    }
+                input {
 
-    .contactUs {
-        display: none
+                    padding: 0.4rem;
+                }
+
+                .inputError {
+
+                    margin-left: 55px;
+                    font-size: .7rem;
+                }
+
+                .FormBtn {
+                    padding: 0.3rem 1rem;
+                    font-size: 1rem;
+                }
+
+                .registeredError {
+                    font-size: .7rem;
+                }
+
+                .have {
+
+                    font-size: 1rem;
+                }
+            }
+
+            .formImg {
+                width: 50%;
+            }
+        }
+
+
     }
 
 }
 
+
+
+
+
+
 @media(max-width:500px) {
-    .container {
-        flex-direction: column;
-    }
+    .container__signup {
 
-    .formContainer {
-        padding: 1rem;
-        gap: .1rem;
-        width: 100%;
-    }
+        .black__layer {
 
-    .formContainer .FormBtn {
-        padding: 0.5rem 1rem;
-    }
+            flex-direction: column;
 
-    .formImg {
-        position: relative;
-        order: -1
-    }
+            .formContainer {
+                padding: 1.5rem 0rem;
+                gap: .6rem;
+                width: 90%;
+            }
 
-    .contactUs {
-        display: none
+            .formImg {
+                width: 100%;
+            }
+        }
+
+
     }
 
 }
