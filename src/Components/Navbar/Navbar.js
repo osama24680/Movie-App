@@ -9,7 +9,7 @@ const Navbar = () => {
     const categories = ["trending", "movie", "tv"]
     const [userName, setUserName] = useState("oso")
 
-    function handleCat(item) {
+    function handleCat(item="movie") {
         localStorage.setItem("dataTypeShows", item)
         ctx.GetShows()
         window.scroll(0, 900)
