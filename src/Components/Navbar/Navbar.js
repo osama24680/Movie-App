@@ -49,7 +49,7 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            <div className="form">
+            {/* <div className="form">
                 <p className="userName">
                     {userName}
                     <div className="login" onClick={ctx.logout}>
@@ -58,9 +58,7 @@ const Navbar = () => {
                     </div>
                 </p>
 
-
-
-            </div>
+            </div> */}
 
         </div>
 

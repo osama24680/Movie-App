@@ -2,7 +2,7 @@ import { createContext, useEffect, useState, useCallback } from "react";
 import axios from "axios"
 import useGenres from "../Components/Generes/useGeneres"
 import joi from "joi"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 export const moviesStore = createContext(0)
 
 export function MoviesStoreProvider(props) {
@@ -12,7 +12,7 @@ export function MoviesStoreProvider(props) {
     const unavailablePoster = "https://www.movienewz.com/img/films/poster-holder.jpg";
     const noPicturePerson = "https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg";
     const baseURL = `https://api.themoviedb.org/3`
-    let navigate=useNavigate()
+    let navigate = useNavigate()
 
     const [randomMovie, setRandomMovie] = useState([])
     const [annualDate, setAnnualDate] = useState("")
@@ -41,7 +41,6 @@ export function MoviesStoreProvider(props) {
     const [formData, setFormData] = useState({})
     const [formDataLogin, setFormDataLogin] = useState({})
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [successLogin, setSuccessLogin] = useState(false)
     const [successSignUp, setSuccessSignUp] = useState(false)
 
     // ************************ getShow ****************************************
@@ -206,9 +205,10 @@ export function MoviesStoreProvider(props) {
         } else {
             let { data } = await axios.post(`https://routeegypt.herokuapp.com/signup`, formData)
             if (data.message === "success") {
-                navigate("/Login")
+                setSuccessSignUp(true)
             } else {
                 setRegistered(data.errors?.email.message)
+                setSuccessSignUp(false)
             }
         }
         setIsLoading(false)
@@ -251,13 +251,15 @@ export function MoviesStoreProvider(props) {
             }
         } else {
             let { data } = await axios.post(`https://routeegypt.herokuapp.com/signin`, formDataLogin)
-
             if (data.message === "success") {
                 localStorage.setItem("userMovie", JSON.stringify(data.user))
                 setIsLoggedIn(true)
-                navigate("/")
+                console.log(data)
+
+                navigate("/home")
             } else {
                 setRegistered(data.message)
+                console.log("else", data)
             }
         }
         setIsLoading(false)
@@ -265,7 +267,7 @@ export function MoviesStoreProvider(props) {
     }
 
     // ************************************Log out******************************************
-    function logout(){
+    function logout() {
         navigate("/Login")
         localStorage.removeItem("userMovie")
     }
@@ -332,7 +334,6 @@ export function MoviesStoreProvider(props) {
         HandleSubmit,
         handleInput,
         isLoggedIn,
-        successLogin,
         successSignUp,
         handleSubmitLogin,
         handleInputLogin,

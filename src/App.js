@@ -10,13 +10,13 @@ function App() {
   return (
     <div className="">
       <Routes>
-        <Route element={<ProtectedRoute />}>
+        {/* <Route element={<ProtectedRoute />}> */}
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Home/:type" element={<Home />} />
           <Route path="/MovieDetails/:id/:element" element={<MovieDetails />} />
           <Route path="*" element={<Error />} />
-        </Route>
+        {/* </Route> */}
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
