@@ -17,8 +17,8 @@ function App() {
           <Route path="/MovieDetails/:id/:element" element={<MovieDetails />} />
           <Route path="*" element={<Error />} />
         {/* </Route> */}
-        <Route path="/Signup" element={<Signup />} />
-        <Route path="/Login" element={<Login />} />
+        {/* <Route path="/Signup" element={<Signup />} />
+        <Route path="/Login" element={<Login />} /> */}
       </Routes>
     </div>
   );
