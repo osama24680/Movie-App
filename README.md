@@ -1,12 +1,12 @@
 # CinaFlix 🎬
 
-A movie and TV show discovery app built with React. Browse what's trending, filter movies and series by genre, search across everything, and open any title to see its trailer, cast and similar picks — all behind a full authentication flow.
+A movie and TV show discovery app built with React. Browse what's trending, filter movies and series by genre, search across everything, and open any title to see its trailer, cast and similar picks, or any actor to see their biography and filmography — all behind a full authentication flow.
 
 **Live demo:** [cinaflix.pages.dev](https://cinaflix.pages.dev)
 
 ## About this project
 
-This project helped me understand how to fetch and handle data from a real REST API, using **10 different TMDB endpoints** for trending titles, discovery, search, genres, details, trailers, cast and similar titles.
+This project helped me understand how to fetch and handle data from a real REST API, using **12 different TMDB endpoints** for trending titles, discovery, search, genres, details, trailers, cast, similar titles and actor profiles.
 
 It also taught me how to manage a single-page application with **React Router**: keeping state in the URL (category and title routes), and protecting every page so only signed-in users can reach it.
 
@@ -20,6 +20,7 @@ Along the way I gained solid experience with **Joi**, writing strict, field-spec
 - **Genre filters** — combine several genres for movies or TV shows
 - **Search** — searches movies and TV shows together
 - **Title details** — poster, rating, runtime, genres, tagline, overview, YouTube trailer, top cast and similar titles
+- **Actor pages** — click any cast member to see their photo, age, birthplace, biography and best-known titles
 - **Pagination** across all lists
 - **Responsive design** — cinematic hero, glass navbar, rating-coloured poster cards and skeleton loading, from phone to desktop
 
@@ -49,6 +50,8 @@ Along the way I gained solid experience with **Joi**, writing strict, field-spec
 | `/{type}/{id}/videos` | Trailer |
 | `/{type}/{id}/credits` | Cast |
 | `/{type}/{id}/similar` | Similar titles |
+| `/person/{id}` | Actor profile |
+| `/person/{id}/combined_credits` | Actor's movies and TV shows |
 
 ## Getting started
 
@@ -85,6 +88,7 @@ src/
 ├── Pages/
 │   ├── Home/              # Hero, search, genres and results
 │   ├── MovieDetails/      # Title details, trailer, cast, similar
+│   ├── Person/            # Actor profile and filmography
 │   ├── Auth/              # Shared auth layout, fields and Joi schemas
 │   ├── Login/  Signup/  ForgotPassword/  Profile/
 │   └── 404/

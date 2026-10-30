@@ -2,7 +2,7 @@ import { createContext, useCallback, useEffect, useMemo, useState } from "react"
 import axios from "axios"
 export const moviesStore = createContext(0)
 
-const tmdb = axios.create({
+export const tmdb = axios.create({
     baseURL: "https://api.themoviedb.org/3",
     params: { api_key: "87be747ada7dcf3d3b24c834e67c68a1", language: "en-US" },
 })

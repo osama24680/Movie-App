@@ -162,6 +162,11 @@
         flex: 0 0 120px;
         text-align: center;
         scroll-snap-align: start;
+        cursor: pointer;
+
+        &:hover b {
+            color: #8fb8ff;
+        }
 
         img {
             width: 110px;

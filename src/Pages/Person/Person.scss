@@ -1,0 +1,28 @@
+.person {
+    .details__inner {
+        align-items: flex-start;
+    }
+
+    .person__bio {
+        margin-top: 20px;
+        white-space: pre-line;
+    }
+
+    .person__more {
+        margin-top: 12px;
+        padding: 0;
+        background: none;
+        color: var(--primaryColor);
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+            color: #8fb8ff;
+        }
+    }
+
+    .person__error {
+        color: #ffb4b4;
+        align-self: center;
+    }
+}

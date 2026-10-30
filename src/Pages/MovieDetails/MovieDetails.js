@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { AiFillStar } from "react-icons/ai"
 import { BiCalendar, BiTime } from "react-icons/bi"
 import { moviesStore } from "../../Store/ContextStore"
@@ -90,7 +90,7 @@ const MovieDetails = () => {
                         <h2 className="section-title">Top cast</h2>
                         <div className="details__cast">
                             {ctx.cast.slice(0, 20).map((person) => (
-                                <div className="castCard" key={person.credit_id}>
+                                <Link className="castCard" key={person.credit_id} to={`/person/${person.id}`}>
                                     <img
                                         src={person.profile_path ? ctx.imgPosterURL + person.profile_path : ctx.noPicturePerson}
                                         alt={person.name}
@@ -98,7 +98,7 @@ const MovieDetails = () => {
                                     />
                                     <b>{person.name}</b>
                                     <small>{person.character}</small>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </section>
