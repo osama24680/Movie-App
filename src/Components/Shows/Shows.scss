@@ -1,135 +1,141 @@
 .Shows {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    flex-wrap: wrap;
-    gap: .5rem;
-    margin-top: 40px;
-    row-gap: .8rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 28px 20px;
+    margin-top: 28px;
+}
 
-    .movieItem {
-        width: 12%;
+.Shows__empty {
+    margin: 48px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 1.05rem;
+}
+
+.movieCard {
+    display: block;
+    animation: fadeUp 0.5s ease both;
+
+    .movieCard__poster {
         position: relative;
-        border-radius: 10px;
-        transition: .5s;
+        aspect-ratio: 2 / 3;
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--lightPrimaryColor);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        transition: transform 0.35s cubic-bezier(.2, .8, .2, 1), box-shadow 0.35s;
 
         img {
-            border-radius: 10px;
-        }
-
-        .shows__content {
-            position: absolute;
-            border-radius: 10px;
-            color: var(--primaryColor);
-            top: 0px;
-            padding: 0rem 0.5rem;
-            height: 100%;
+            display: block;
             width: 100%;
-            // display: none;
-            opacity: 0;
-
-
-            span {
-                background-color: var(--lightPrimaryColor);
-                padding: .2rem .5rem;
-                border-radius: 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin-top: 20px;
-            }
-
-            .spans_icons {
-                display: flex;
-                justify-content: space-between;
-
-            }
-
-            .spanDouble svg {
-                margin-right: 5px;
-
-            }
-
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s, filter 0.35s;
         }
 
-        .play {
+        // Gradient ring that appears on hover
+        &::after {
+            content: "";
             position: absolute;
-            top: 40%;
-            left: 50%;
-            font-size: 3rem;
-            transform: translateY(-50%);
-            transform: translateX(-50%);
-            color: var(--whiteColor);
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: var(--accentGradient);
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
             opacity: 0;
+            transition: opacity 0.35s;
         }
+    }
 
-        p {
-            color: var(--whiteColor);
-            margin-top: 15px;
-            font-weight: 600;
+    .movieCard__rating {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 4px 8px;
+        border-radius: 8px;
+        background: rgba(10, 12, 18, 0.75);
+        backdrop-filter: blur(6px);
+        font-size: 0.8rem;
+    }
+
+    .movieCard__play {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-size: 3.4rem;
+        color: #fff;
+        background: linear-gradient(0deg, rgba(10, 12, 18, 0.7) 0%, rgba(10, 12, 18, 0.1) 60%);
+        opacity: 0;
+        transition: opacity 0.35s;
+
+        svg {
+            filter: drop-shadow(0 4px 20px rgba(47, 128, 255, 0.8));
+            transform: scale(0.8);
+            transition: transform 0.35s;
         }
+    }
 
-        &:hover {
-            cursor: pointer;
+    .movieCard__title {
+        margin: 12px 0 2px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--whiteColor);
+        line-height: 1.35;
+    }
+
+    .movieCard__sub {
+        margin: 0;
+        font-size: 0.8rem;
+        color: var(--muted);
+    }
+
+    &:hover,
+    &:focus-visible {
+        .movieCard__poster {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(47, 128, 255, 0.3);
 
             img {
-                cursor: pointer;
-                filter: blur(1.5px);
+                transform: scale(1.06);
             }
 
-            .shows__content,
-            .play {
+            &::after {
                 opacity: 1;
             }
         }
 
-    }
+        .movieCard__play {
+            opacity: 1;
 
-
-}
-
-@media(max-width:800px) {
-    .Shows {
-        gap: .5rem;
-        margin-top: 40px;
-        row-gap: .8rem;
-
-        .movieItem {
-            width: 18%;
-
-            .shows__content {
-                top: -7px;
-                padding: 0rem 0.2rem;
-                font-size: .8rem;
-
-                span {
-                    border-radius: 5px;
-                }
-            }
-
-            .play {
-                top: 25%;
-                font-size: 2.5rem;
-            }
-
-            p {
-                font-size: 13px;
+            svg {
+                transform: scale(1);
             }
         }
 
+        .movieCard__title {
+            color: #8fb8ff;
+        }
+    }
 
+    &.movieCard--skeleton {
+        aspect-ratio: 2 / 3;
+        border-radius: var(--radius);
+        background: linear-gradient(90deg, var(--lightPrimaryColor) 0%, var(--surface2) 50%, var(--lightPrimaryColor) 100%);
+        background-size: 800px 100%;
+        animation: shimmer 1.4s linear infinite;
     }
 }
 
-@media(max-width:600px) {
+@media (max-width: 700px) {
     .Shows {
-        gap: .5rem;
-        margin-top: 40px;
-        row-gap: .8rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px 14px;
+    }
 
-        .movieItem {
-            width: 45%;
-        }
+    .movieCard .movieCard__play {
+        display: none;
     }
 }

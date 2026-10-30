@@ -1,39 +1,33 @@
-import React, { useContext, useEffect } from 'react'
-import { moviesStore } from "../../Store/ContextStore"
-import "./Login.scss"
-import { Loader } from '@mantine/core';
-import netflix from "../../assests/netflix.png"
-import amazon from "../../assests/amazon.png"
-import hulu from "../../assests/hulu.png"
-import disney from "../../assests/disney.png"
-import espn from "../../assests/espn.png"
-import { Link } from 'react-router-dom'
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useAuth } from "../../Store/AuthContext"
+import { AuthLayout, Field, SubmitButton } from "../Auth/AuthLayout"
+import { schemas, useAuthForm } from "../Auth/authForm"
 
 const Login = () => {
-    let ctx = useContext(moviesStore)
+    const { signin } = useAuth()
+    const navigate = useNavigate()
+    const { state } = useLocation()
+    const form = useAuthForm()
+    const notice = state?.registered
+        ? "Account created, you can log in now"
+        : state?.passwordReset ? "Password updated, log in with your new password" : ""
+
+    const onSubmit = form.submit(schemas.signin, async (values) => {
+        await signin(values)
+        navigate("/", { replace: true })
+    })
 
     return (
-        <div className="container__signup">
-            <div className="black__layer">
-                <form className="formContainer" onSubmit={(e) => ctx.handleSubmitLogin(e)}>
-                    <input onChange={ctx.handleInputLogin} type="email" name="email" placeholder='Email' />
-                    <p className="inputError">{ctx.joiErrors.email && ctx.joiErrors.email}</p>
-                    <input onChange={ctx.handleInputLogin} type="password" name="password" placeholder='Password' />
-                    <p className="inputError">{ctx.joiErrors.password && ctx.joiErrors.password}</p>
-                    <button className="FormBtn">{ctx.isLoading ? <Loader color="blue" size="sm" /> : `Confirm`}</button>
-                    {ctx.registered && <h3 className="registeredError" style={{ color: "#ff0808d1" }}>{ctx.registered}</h3>}
-                    <p className="have">You do not have an account? <Link to="/Signup">Sign Up</Link></p>
-                </form>
-                <div className="formImg">
-                    <img src={netflix} alt="" />
-                    <img src={amazon} alt="" />
-                    <img src={hulu} alt="" />
-                    <img src={disney} alt="" />
-                    <img src={espn} alt="" />
-                </div>
-            </div>
-        </div>
+        <AuthLayout title="Welcome back" subtitle="Log in to keep watching">
+            {notice && <p className="auth__notice">{notice}</p>}
+            <form className="auth__form" onSubmit={onSubmit} noValidate>
+                <Field form={form} name="email" label="Email" type="email" autoComplete="email" />
+                <Field form={form} name="password" label="Password" type="password" autoComplete="current-password" />
+                <Link to="/forgot-password" className="auth__link auth__link--end">Forgot password?</Link>
+                <SubmitButton form={form}>Log in</SubmitButton>
+            </form>
+            <p className="auth__switch">Don't have an account? <Link to="/signup" className="auth__link">Sign up</Link></p>
+        </AuthLayout>
     )
 }
 

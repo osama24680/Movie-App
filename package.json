@@ -1,7 +1,6 @@
 {
   "name": "new_movies",
   "version": "0.1.0",
-  "proxy": "https://routeegypt.herokuapp.com/signin",
   "homepage": "http://localhost:3000",
   "private": true,
   "dependencies": {

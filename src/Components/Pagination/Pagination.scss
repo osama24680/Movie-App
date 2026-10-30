@@ -1,7 +1,5 @@
-.MuiPagination-root {
-    button {
-        color: var(--primaryColor);
-        font-size: 1.2rem;
-    }
-}   
-
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 48px 0 64px;
+}

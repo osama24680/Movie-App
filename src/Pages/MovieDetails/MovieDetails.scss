@@ -1,176 +1,215 @@
-.Details__container {
-    width: 90%;
-    margin: auto;
-}
+.details {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: calc(var(--navHeight) + 48px) 0 56px;
 
-.movieDetails {
-    padding: 0 0 50px 0;
-
-    .poster__section {
-        display: flex;
-        justify-content: space-between;
+    .details__backdrop {
+        position: absolute;
+        inset: 0;
         width: 100%;
-        margin-top: 30px;
-
-        .poster__section-img {
-            width: 32.5%;
-            border-radius: 10px;
-
-            img {
-                width: 100%;
-                border-radius: 10px;
-            }
-        }
-
-        .poster__section-trailer {
-            width: 65%;
-            display: flex;
-            flex-direction: column;
-
-            iframe {
-                width: 100%;
-                height: 380px;
-                border-radius: 10px;
-
-            }
-
-            .AliceCarouselDiv {
-                width: 100%;
-
-                .carouselItem {
-                    display: flex;
-                    flex-direction: column;
-
-                    object-fit: contain;
-                    padding: 10px;
-                    color: var(--whiteColor);
-                    margin-top: 20px;
-                    margin-left: 20px;
-                    padding-left: 40px;
-                    width: 160px;
-                    height: auto;
-                }
-
-                .carouselItem__img {
-                    border-radius: 10px;
-                    margin-bottom: 5px;
-                    box-shadow: 0px 0px 5px black;
-                    width: 100%;
-                    gap: 2rem;
-                }
-            }
-
-
-        }
-
-
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        opacity: 0.45;
+        filter: blur(2px);
+        animation: fadeUp 0.8s ease both;
     }
 
-    .overview__section {
-        height: 40%;
-        overflow-y: scroll;
-        padding: 15px;
-        border-radius: 10px;
-        scrollbar-width: thin;
-        box-shadow: 2px 2px 25px 1px var(--primaryColor);
-        border: 2px solid var(--primaryColor);
-        text-align: justify;
-        margin-top: 50px;
-        color: var(--whiteColor);
-        font-size: 1.3rem;
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+            linear-gradient(90deg, var(--backgroundColor) 0%, rgba(10, 12, 18, 0.7) 50%, rgba(10, 12, 18, 0.3) 100%),
+            linear-gradient(0deg, var(--backgroundColor) 0%, rgba(10, 12, 18, 0) 50%);
+    }
 
-        &::-webkit-scrollbar {
-            display: none;
+    .details__inner {
+        display: flex;
+        gap: 48px;
+        align-items: flex-end;
+        width: 90%;
+        max-width: 1400px;
+        margin: auto;
+    }
+
+    .details__poster {
+        flex: 0 0 280px;
+
+        img,
+        .details__skeleton {
+            display: block;
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), var(--glow);
+            animation: fadeUp 0.6s ease both;
         }
+
+        .details__skeleton {
+            background: linear-gradient(90deg, var(--lightPrimaryColor) 0%, var(--surface2) 50%, var(--lightPrimaryColor) 100%);
+            background-size: 800px 100%;
+            animation: shimmer 1.4s linear infinite;
+        }
+    }
+
+    .details__info {
+        flex: 1;
+        animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .details__type {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: var(--accentGradient);
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .details__title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(2.6rem, 6vw, 5rem);
+        letter-spacing: 2px;
+        line-height: 0.95;
+        margin: 14px 0 8px;
+    }
+
+    .details__tagline {
+        color: #aab3c5;
+        font-style: italic;
+        margin: 0 0 16px;
+    }
+
+    .details__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 22px;
+        color: #d4d9e4;
 
         span {
-            display: block;
-            width: 100%;
-            font-weight: bold;
-            padding-bottom: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        small {
+            color: var(--muted);
+            font-weight: 400;
         }
     }
 
-    .similar__section {
+    .details__genres {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0;
 
-        .spanSimilar {
-            display: block;
-            width: 100%;
-            font-weight: bold;
-            padding-bottom: 10px;
-            color: var(--whiteColor);
-            margin-top: 50px;
-            font-size: 2rem;
-
+        span {
+            padding: 5px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.06);
+            font-size: 0.85rem;
         }
     }
-}
-@media(max-width:800px) {
-    .movieDetails {
-        padding: 0 0 50px 0;
 
-        .poster__section {
-            margin-top: 20px;
-            flex-direction: column;
-
-            .poster__section-img {
-                width: 100%;
-            }
-
-            .poster__section-trailer {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-
-                iframe {
-                    height: 400px;
-                    margin-top: 20px;
-                }
-
-                .AliceCarouselDiv {
-                    .carouselItem {
-                        margin-left: 0px;
-                        padding-left: 0px;
-                        width: 170px;
-                    }
-                }
-            }
-        }
-
+    .details__overview {
+        max-width: 760px;
+        color: #c7cdd9;
+        line-height: 1.8;
+        margin: 0;
     }
 }
 
-@media(max-width:500px) {
-    .movieDetails {
-        padding: 0 0 50px 0;
+.details__body {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
 
-        .poster__section {
-            margin-top: 20px;
-            flex-direction: column;
+    .section-title {
+        margin-bottom: 22px;
+    }
+}
 
-            .poster__section-img {
-                width: 100%;
-            }
+.details__trailer {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    max-width: 1000px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), var(--glow);
 
-            .poster__section-trailer {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
+    iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
 
-                iframe {
-                    height: auto;
-                    margin-top: 20px;
-                }
+.details__cast {
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
 
-                .AliceCarouselDiv {
-                    .carouselItem {
-                        margin-left: 0px;
-                        padding-left: 0px;
-                        width: 170px;
-                    }
-                }
-            }
+    .castCard {
+        flex: 0 0 120px;
+        text-align: center;
+        scroll-snap-align: start;
+
+        img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            padding: 3px;
+            background: var(--accentGradient);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
         }
 
+        &:hover img {
+            transform: scale(1.06);
+        }
+
+        b {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        small {
+            display: block;
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .details {
+        padding-bottom: 32px;
+
+        .details__inner {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .details__poster {
+            flex-basis: auto;
+            width: 180px;
+        }
+    }
+
+    .details__body {
+        gap: 40px;
     }
 }

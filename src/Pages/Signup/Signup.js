@@ -1,53 +1,30 @@
-import React, { useContext, useEffect } from 'react'
-import { moviesStore } from "../../Store/ContextStore"
-import "./Signup.scss"
-import { Loader } from '@mantine/core';
-import netflix from "../../assests/netflix.png"
-import amazon from "../../assests/amazon.png"
-import hulu from "../../assests/hulu.png"
-import disney from "../../assests/disney.png"
-import espn from "../../assests/espn.png"
-import { Link } from 'react-router-dom'
-import { useNavigate, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
+import { useAuth } from "../../Store/AuthContext"
+import { AuthLayout, Field, SubmitButton } from "../Auth/AuthLayout"
+import { schemas, useAuthForm } from "../Auth/authForm"
 
 const Signup = () => {
-    let ctx = useContext(moviesStore)
+    const { signup } = useAuth()
+    const navigate = useNavigate()
+    const form = useAuthForm()
+
+    const onSubmit = form.submit(schemas.signup, async (values) => {
+        await signup(values)
+        navigate("/login", { replace: true, state: { registered: true } })
+    })
 
     return (
-        <>
-            {
-                ctx.successSignUp === true ? <Navigate to="login" /> : (
-                    <div className="container__signup">
-                        <div className="black__layer">
-                            <form className="formContainer" onSubmit={(e) => ctx.HandleSubmit(e)}>
-                                <input onChange={ctx.handleInput} type="text" name="first_name" placeholder='First Name' />
-                                <p className="inputError">{ctx.joiErrors.first_name && ctx.joiErrors.first_name}</p>
-                                <input onChange={ctx.handleInput} type="text" name="last_name" placeholder='Last Name' />
-                                <p className="inputError">{ctx.joiErrors.last_name && ctx.joiErrors.last_name}</p>
-                                <input onChange={ctx.handleInput} type="number" name="age" placeholder='Age' />
-                                <p className="inputError">{ctx.joiErrors.age && ctx.joiErrors.age}</p>
-                                <input onChange={ctx.handleInput} type="email" name="email" placeholder='Email' />
-                                <p className="inputError">{ctx.joiErrors.email && ctx.joiErrors.email}</p>
-                                <input onChange={ctx.handleInput} type="password" name="password" placeholder='Password' />
-                                <p className="inputError">{ctx.joiErrors.password && ctx.joiErrors.password}</p>
-                                <button className="FormBtn">{ctx.isLoading ? <Loader color="blue" size="sm" /> : `Confirm`}</button>
-                                {ctx.registered && <h3 className="registeredError" style={{ color: "#ff0808d1" }}>{ctx.registered}</h3>}
-                                <p className="have">You have an account? <Link to="/Login">Log In</Link></p>
-                            </form>
-                            <div className="formImg">
-                                <img src={netflix} alt="" />
-                                <img src={amazon} alt="" />
-                                <img src={hulu} alt="" />
-                                <img src={disney} alt="" />
-                                <img src={espn} alt="" />
-                            </div>
-                        </div>
-                    </div>
-                )
-            }
-        </>
-
-
+        <AuthLayout title="Create your account" subtitle="Movies and TV shows in one place">
+            <form className="auth__form" onSubmit={onSubmit} noValidate>
+                <Field form={form} name="name" label="Name" autoComplete="name" />
+                <Field form={form} name="email" label="Email" type="email" autoComplete="email" />
+                <Field form={form} name="phone" label="Phone" type="tel" placeholder="01xxxxxxxxx" autoComplete="tel" />
+                <Field form={form} name="password" label="Password" type="password" autoComplete="new-password" />
+                <Field form={form} name="rePassword" label="Confirm password" type="password" autoComplete="new-password" />
+                <SubmitButton form={form}>Sign up</SubmitButton>
+            </form>
+            <p className="auth__switch">Already have an account? <Link to="/login" className="auth__link">Log in</Link></p>
+        </AuthLayout>
     )
 }
 

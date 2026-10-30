@@ -1,17 +1,26 @@
-import React from 'react'
-import "./Search.scss"
-import { AiOutlineSearch } from "react-icons/ai"
 import { useContext } from "react"
+import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai"
 import { moviesStore } from "../../Store/ContextStore"
+import "./Search.scss"
+
 const Search = () => {
-    let ctx = useContext(moviesStore)
+    const ctx = useContext(moviesStore)
     return (
-
-        <div className="input">
-            <input onChange={(e)=>{ctx.setSearchText(e.target.value)}} type="search" placeholder="I'm looking for..." />
-            {/* <AiOutlineSearch /> */}
+        <div className="search">
+            <AiOutlineSearch className="search__icon" />
+            <input
+                value={ctx.searchText}
+                onChange={(e) => ctx.setSearchText(e.target.value)}
+                type="search"
+                placeholder="Search movies, TV shows..."
+                aria-label="Search movies and TV shows"
+            />
+            {ctx.searchText && (
+                <button type="button" className="search__clear" onClick={() => ctx.setSearchText("")} aria-label="Clear search">
+                    <AiOutlineClose />
+                </button>
+            )}
         </div>
-
     )
 }
 
