@@ -4,6 +4,7 @@ import { AiFillStar } from "react-icons/ai"
 import { BiCalendar, BiTime } from "react-icons/bi"
 import { moviesStore } from "../../Store/ContextStore"
 import { ratingClass, yearOf } from "../../lib/rating"
+import useDocumentTitle from "../../lib/useDocumentTitle"
 import Shows from "../../Components/Shows/Shows"
 import Navbar from "../../Components/Navbar/Navbar"
 import CustomPagination from "../../Components/Pagination/CustomPagination"
@@ -32,6 +33,7 @@ const MovieDetails = () => {
 
     const isLoaded = String(movie.id) === String(id)
     const title = movie.title || movie.name || movie.original_title || movie.original_name
+    useDocumentTitle(isLoaded ? title : "")
 
     return (
         <>

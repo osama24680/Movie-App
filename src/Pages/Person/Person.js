@@ -5,6 +5,7 @@ import { moviesStore, tmdb } from "../../Store/ContextStore"
 import Shows from "../../Components/Shows/Shows"
 import Navbar from "../../Components/Navbar/Navbar"
 import Footer from "../../Components/Footer/Footer"
+import useDocumentTitle from "../../lib/useDocumentTitle"
 import "../MovieDetails/MovieDetails.scss"
 import "./Person.scss"
 
@@ -58,6 +59,8 @@ const Person = () => {
             .catch(() => !ignore && setError(true))
         return () => { ignore = true }
     }, [id])
+
+    useDocumentTitle(person?.name)
 
     const bio = person?.biography || ""
     const isLongBio = bio.length > 600
